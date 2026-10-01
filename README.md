@@ -12,7 +12,7 @@ Content is safe up to the end of season 5, which finished airing in October 2025
 
 **Sketched mugshots rather than photographs.** Cast photos belong to Apple and the photographers, and would make the project look official. Each portrait in `shared/portraits.js` is a front-facing ink sketch against a height chart, assembled from parts (face shape, hair, beard, brows, mouth, clothing) and drawn twice with a slight offset so the line looks hurried. Hostile agents get a redaction bar across the eyes. The same portraits appear in every game.
 
-**Ratings, not invented numbers.** The trumps stats (Tradecraft, Clearance, Ruthlessness, Hygiene, Luck, Loyalty) are judgements out of 100 grounded in what happens on screen. Luck is scored against the character's fate by the end of season 5, so the dead score low. The card blurbs record the events the numbers rest on.
+**Ratings, not invented numbers.** The seven trumps stats are Tradecraft, Bottle, Park Standing, Disgrace, Hygiene, Expendability and Flatulence, each a judgement out of 100 grounded in what happens on screen up to the end of season 5. Higher always wins. Disgrace and Expendability are capacities rather than virtues, so the officers the Service has given up on finally have something to win with; Flatulence exists because Lamb does. The card blurbs record the events the numbers rest on.
 
 **Three opponents.** Roddy Ho picks at random. Diana Taverner picks her highest raw number, with a one-in-four chance of a random pick. Jackson Lamb ranks each of his stats against the whole deck and calls the one least likely to be beaten.
 
