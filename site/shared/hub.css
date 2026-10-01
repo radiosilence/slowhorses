@@ -19,7 +19,7 @@ body { min-height: 100dvh; }
   color: var(--ink);
   background:
     radial-gradient(ellipse at 85% 110%, rgba(143, 122, 58, .35), transparent 55%),
-    radial-gradient(circle at 12% 18%, transparent 26px, rgba(110, 80, 30, .2) 28px, transparent 31px),
+    radial-gradient(circle at 92% 88%, transparent 26px, rgba(110, 80, 30, .2) 28px, transparent 31px),
     linear-gradient(var(--manila), var(--manila-2));
   border-radius: 3px 3px 3px 3px;
   box-shadow: 0 2px 0 #8f7a3a, 0 24px 50px rgba(0, 0, 0, .55);
@@ -129,20 +129,12 @@ a.tile:focus-visible { outline: 3px solid var(--hub); outline-offset: 3px; }
 .tab { font: 700 11px var(--sans); letter-spacing: .25em; text-transform: uppercase; color: var(--stamp); }
 .tile h2 { margin: 0; font: 400 22px/1.1 var(--type); }
 .tile p { margin: 0; font-size: 15px; line-height: 1.4; color: #3a352a; }
-.tile.soon .tile-art, .tile.soon .tile-text { opacity: .55; filter: grayscale(.6); }
-.soon-stamp {
-  position: absolute;
-  right: 14px;
-  top: 128px;
-  font-size: 15px;
-  background: rgba(239, 229, 198, .85);
-}
 
 /* Art for each tile. */
 .art-cards { position: relative; width: 200px; height: 150px; }
 .art-cards > * { position: absolute; top: 12px; width: 84px; height: 130px; border-radius: 4px; overflow: hidden; box-shadow: 0 8px 18px rgba(0, 0, 0, .5); transition: transform .35s var(--ease); }
 .art-cards > :nth-child(1) { left: 22px; transform: rotate(-12deg); }
-.art-cards > :nth-child(2) { left: 58px; transform: rotate(0deg) translateY(-6px); }
+.art-cards > :nth-child(2) { left: 58px; z-index: 1; transform: rotate(0deg) translateY(-6px); }
 .art-cards > :nth-child(3) { left: 94px; transform: rotate(12deg); }
 a.tile:hover .art-cards > :nth-child(1) { transform: rotate(-18deg) translateX(-8px); }
 a.tile:hover .art-cards > :nth-child(3) { transform: rotate(18deg) translateX(8px); }

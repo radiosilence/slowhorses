@@ -132,11 +132,11 @@ export function portrait(card, tint = "#6b5a2c") {
   let seed = [...card.id].reduce((a, ch) => a * 31 + ch.charCodeAt(0), 7) >>> 0;
   const rand = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 2 ** 32);
   const beard = l.beard === "stubble"
-    ? `<g clip-path="url(#${id}-face)" fill="${hairFill}" opacity=".45">${Array.from({ length: 140 }, () => {
+    ? `<g clip-path="url(#${id}-face)" fill="${INK}" opacity=".32">${Array.from({ length: 160 }, () => {
         const x = 60 + rand() * 80;
         const y = 126 + rand() * 50;
         const inMouth = Math.abs(x - 100) < 16 && y > 140 && y < 156;
-        return inMouth || (Math.abs(x - 100) > 30 && y < 140) ? "" : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(0.5 + rand() * 0.5).toFixed(2)}"/>`;
+        return inMouth || (Math.abs(x - 100) > 30 && y < 140) ? "" : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(0.35 + rand() * 0.4).toFixed(2)}"/>`;
       }).join("")}</g>`
     : l.beard ? `<g fill="${hairFill}" stroke="${INK}" stroke-width="1.6">${sketch(BEARD[l.beard])}</g>` : "";
 
