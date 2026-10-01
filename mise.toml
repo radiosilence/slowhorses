@@ -1,0 +1,3 @@
+[tasks.serve]
+description = "Serve the site on :8771"
+run = "python3 -m http.server 8771 -d site"
