@@ -162,3 +162,10 @@ body { min-height: 100dvh; }
   .r-top { grid-template-columns: 150px 1fr; }
   .r-art { width: 150px; height: 188px; }
 }
+
+.mug-stack { position: relative; width: 220px; height: 160px; }
+.mug-stack > div { position: absolute; top: 8px; width: 100px; height: 125px; box-shadow: 2px 5px 12px rgba(0, 0, 0, .35); }
+.mug-stack > div:nth-child(1) { left: 0; transform: rotate(-9deg); }
+.mug-stack > div:nth-child(2) { left: 60px; top: 0; z-index: 1; transform: rotate(2deg); }
+.mug-stack > div:nth-child(3) { left: 120px; transform: rotate(10deg); }
+.mug-stack svg { display: block; width: 100%; height: 100%; }
