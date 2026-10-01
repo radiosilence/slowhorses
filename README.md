@@ -16,6 +16,12 @@ Content is safe up to the end of season 5, which finished airing in October 2025
 
 **Three opponents.** Roddy Ho picks at random. Diana Taverner picks her highest raw number, with a one-in-four chance of a random pick. Jackson Lamb ranks each of his stats against the whole deck and calls the one least likely to be beaten.
 
+**One quiz engine, separate data.** `shared/quiz.js` handles questions, scoring, the result page and sharing; each quiz directory supplies only a `data.js` with its questions, results and axes. Every answer adds weights to results and to five axes (Nerve, Guile, Loyalty, Ambition, Squalor). The top result wins, ties go to whichever result the last answer favoured, and axes are scaled against the lowest and highest totals the questions allow.
+
+**Results live in the URL.** A result is encoded in the hash (`#first/second/axes/match`), so a shared link opens that result directly with no server and no stored state, and offers the visitor the quiz.
+
+**Postings that appear on screen.** The role quiz uses only posts the show has depicted by the end of season 5. The Limitations Committee is left out because it first appears in season 6.
+
 ## Run locally
 
 ```

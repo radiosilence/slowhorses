@@ -27,7 +27,7 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }
-html { background: var(--grime); }
+html { background: var(--grime); overflow-x: clip; }
 body {
   background:
     radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201, 178, 107, .16), transparent 70%),
@@ -55,7 +55,7 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  inset: -20%;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   opacity: .5;
@@ -65,7 +65,7 @@ body::after {
     radial-gradient(ellipse 34% 20% at 40% 85%, rgba(220, 210, 180, .05), transparent);
   animation: smoke 40s ease-in-out infinite alternate;
 }
-@keyframes smoke { to { transform: translate(6%, -4%) rotate(4deg); } }
+@keyframes smoke { to { transform: translate(4%, -3%) scale(1.1); } }
 
 [hidden] { display: none !important; }
 
