@@ -17,8 +17,10 @@ const ICON = {
   ballot: `<path d="M-26 -6 H26 V30 H-26 Z M-12 -6 V-30 H12 V-6 M-8 -18 L-2 -12 L10 -26"/>`,
 };
 
+let uid = 0;
+
 export function insignia(key, d) {
-  const id = `arc-${key}`;
+  const id = `arc-${key}-${++uid}`;
   return `<svg viewBox="0 0 200 250" class="insignia-svg" aria-hidden="true">
   <g transform="translate(100 125) rotate(-6)" fill="none" stroke="${d.colour}" color="${d.colour}" stroke-linecap="round" stroke-linejoin="round">
     <circle r="88" stroke-width="5"/>

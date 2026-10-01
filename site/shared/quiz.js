@@ -1,3 +1,5 @@
+import "./idle.js";
+
 // One engine for both quizzes. Each quiz page passes in its own data module:
 // { id, title, kicker, form, intro, verdict, stampWord, secondLabel, axes, questions, results, art, shareText }
 

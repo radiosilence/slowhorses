@@ -1,3 +1,4 @@
+import "../shared/idle.js";
 import { CARDS, STATS, FACTIONS } from "./cards.js";
 import { portrait, crest } from "../shared/portraits.js";
 
@@ -94,6 +95,14 @@ const buzz = (p) => navigator.vibrate?.(p);
 
 const backURL = `url("data:image/svg+xml,${encodeURIComponent(crest().replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" '))}")`;
 document.documentElement.style.setProperty("--back", backURL);
+
+// Face-down cards in flight only ever show their back, so skip the face entirely.
+function backEl() {
+  const el = document.createElement("div");
+  el.className = "card down";
+  el.innerHTML = `<div class="card-inner"><div class="face back">${crest()}</div></div>`;
+  return el;
+}
 
 function cardEl(card, { down = false } = {}) {
   const el = document.createElement("div");
@@ -222,7 +231,7 @@ async function deal(deck, token) {
   for (let i = 0; i < deck.length; i++) {
     if (token !== state.token) return;
     const toYou = i % 2 === 0;
-    const el = cardEl(deck[i], { down: true });
+    const el = backEl();
     stage.append(el);
     jump(el, { ...centre, r: Math.random() * 10 - 5 });
     flying.push(el);
@@ -411,7 +420,7 @@ async function round(token) {
     const dest = outcome === "win" ? sl.you : sl.cpu;
     const pile = outcome === "win" ? state.you : state.cpu;
     if (state.pot.length) {
-      const potEl = cardEl(state.pot[0], { down: true });
+      const potEl = backEl();
       stage.append(potEl);
       jump(potEl, sl.pot);
       requestAnimationFrame(() => place(potEl, dest, 0.6));
@@ -517,20 +526,26 @@ let galleryBuilt = false;
 $("#open-gallery").addEventListener("click", () => {
   if (!galleryBuilt) {
     $("#gallery-grid").innerHTML = "";
-    CARDS.forEach((card, i) => {
-      const b = document.createElement("button");
-      b.className = "thumb";
-      b.style.setProperty("--i", i);
-      b.setAttribute("aria-label", card.name);
-      b.append(cardEl(card));
-      b.addEventListener("click", () => {
-        const z = $("#zoom-card");
-        z.style.setProperty("--s", Math.min(1, (innerWidth - 32) / W, (innerHeight - 100) / H));
-        z.replaceChildren(cardEl(card));
-        $("#zoom").showModal();
+    // Build in small batches so opening the deck never stalls a frame.
+    const add = (from) => {
+      CARDS.slice(from, from + 2).forEach((card, j) => {
+        const i = from + j;
+        const b = document.createElement("button");
+        b.className = "thumb";
+        b.style.setProperty("--i", i);
+        b.setAttribute("aria-label", card.name);
+        b.append(cardEl(card));
+        b.addEventListener("click", () => {
+          const z = $("#zoom-card");
+          z.style.setProperty("--s", Math.min(1, (innerWidth - 32) / W, (innerHeight - 100) / H));
+          z.replaceChildren(cardEl(card));
+          $("#zoom").showModal();
+        });
+        $("#gallery-grid").append(b);
       });
-      $("#gallery-grid").append(b);
-    });
+      if (from + 2 < CARDS.length) requestAnimationFrame(() => add(from + 2));
+    };
+    add(0);
     galleryBuilt = true;
   }
   show("gallery");

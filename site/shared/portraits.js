@@ -182,21 +182,22 @@ export function portrait(card, tint = "#6b5a2c") {
 
 // A manila file cover with a rubber-stamped horseshoe: the back of every card.
 export function crest() {
+  const id = `cr${++uid}`;
   return `<svg viewBox="0 0 200 310" class="crest-svg" aria-hidden="true">
   <defs>
-    <pattern id="crest-fibre" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
+    <pattern id="${id}-fibre" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">
       <path d="M0 3 H12 M0 9 H7" stroke="#b39c5c" stroke-width=".6" opacity=".5"/>
     </pattern>
   </defs>
   <rect width="200" height="310" fill="#d9c58c"/>
-  <rect width="200" height="310" fill="url(#crest-fibre)"/>
+  <rect width="200" height="310" fill="url(#${id}-fibre)"/>
   <path d="M0 0 H120 L132 18 H200 V310 H0 Z" fill="#e2cf98" opacity=".6"/>
   <rect x="12" y="28" width="176" height="270" fill="none" stroke="#8f7a3a" stroke-width="1.2" stroke-dasharray="4 3"/>
   <g transform="translate(100 150) rotate(-8)" fill="none" stroke="${RED}" opacity=".85">
     <circle r="62" stroke-width="3.5"/>
     <circle r="54" stroke-width="1.2"/>
-    <path id="crest-arc" d="M-46 0 A46 46 0 0 1 46 0" stroke="none"/>
-    <text font-family="Courier Prime, monospace" font-weight="700" font-size="12.5" letter-spacing="2.6" fill="${RED}" stroke="none"><textPath href="#crest-arc" startOffset="50%" text-anchor="middle">SLOUGH HOUSE</textPath></text>
+    <path id="${id}-arc" d="M-46 0 A46 46 0 0 1 46 0" stroke="none"/>
+    <text font-family="Courier Prime, monospace" font-weight="700" font-size="12.5" letter-spacing="2.6" fill="${RED}" stroke="none"><textPath href="#${id}-arc" startOffset="50%" text-anchor="middle">SLOUGH HOUSE</textPath></text>
     <path d="M-20 26 C-30 -2 -24 -24 0 -24 C24 -24 30 -2 20 26 L10 26 C18 4 14 -12 0 -12 C-14 -12 -18 4 -10 26 Z" fill="${RED}" stroke="none"/>
     <g fill="#d9c58c" stroke="none">${[[-17, 10], [-19, -4], [-13, -16], [17, 10], [19, -4], [13, -16]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2"/>`).join("")}</g>
     <text y="46" text-anchor="middle" font-family="Courier Prime, monospace" font-weight="700" font-size="9" letter-spacing="2" fill="${RED}" stroke="none">FILE COPY</text>

@@ -2,7 +2,7 @@
 
 Unofficial browser games for the Apple TV+ series *Slow Horses*: a Top Trumps-style card game and two personality quizzes.
 
-https://radiosilence.github.io/slow-horses/
+https://radiosilence.github.io/slowhorses/
 
 Content is safe up to the end of season 5, which finished airing in October 2025. Season 6 began airing on 16 September 2026 and is excluded until it has finished.
 
@@ -21,6 +21,8 @@ Content is safe up to the end of season 5, which finished airing in October 2025
 **Results live in the URL.** A result is encoded in the hash (`#first/second/axes/match`), so a shared link opens that result directly with no server and no stored state, and offers the visitor the quiz.
 
 **Postings that appear on screen.** The role quiz uses only posts the show has depicted by the end of season 5. The Limitations Committee is left out because it first appears in season 6.
+
+**Cheap animation.** Only `transform` and `opacity` are animated, on HTML elements; decorative loops pause when the tab is hidden; there are no full-screen blend modes or backdrop blurs. Cards in flight are bare backs, and the deck gallery is built a couple of cards per frame. WebKit can ignore `backface-visibility` mid-flip, so each card swaps the visibility of its faces at the flip's midpoint.
 
 ## Run locally
 

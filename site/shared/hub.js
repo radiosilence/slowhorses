@@ -1,3 +1,4 @@
+import "./idle.js";
 import { CARDS } from "../trumps/cards.js";
 import { portrait, crest } from "./portraits.js";
 import { pass } from "./insignia.js";

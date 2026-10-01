@@ -47,8 +47,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: .16;
-  mix-blend-mode: overlay;
+  opacity: .07;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 /* Lamb's smoke, drifting across the room. */
@@ -65,6 +64,7 @@ body::after {
     radial-gradient(ellipse 34% 20% at 40% 85%, rgba(220, 210, 180, .05), transparent);
   animation: smoke 40s ease-in-out infinite alternate;
 }
+.page-hidden body::after { animation-play-state: paused; }
 @keyframes smoke { to { transform: translate(4%, -3%) scale(1.1); } }
 
 [hidden] { display: none !important; }
@@ -113,8 +113,7 @@ body::after {
   text-decoration: none;
   border: 1px solid rgba(201, 178, 107, .45);
   border-radius: 3px;
-  background: rgba(29, 25, 18, .7);
-  backdrop-filter: blur(4px);
+  background: rgba(29, 25, 18, .85);
 }
 .back-link:hover { color: var(--paper); border-color: var(--wall); }
 

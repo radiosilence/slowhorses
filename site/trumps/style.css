@@ -225,7 +225,6 @@ h1 span { display: block; color: var(--wall); font-size: .8em; letter-spacing: .
   transform-origin: 0 0;
   perspective: 1400px;
   transition: transform var(--dur, .7s) var(--ease);
-  will-change: transform;
 }
 .card-inner {
   position: absolute;
@@ -244,6 +243,11 @@ h1 span { display: block; color: var(--wall); font-size: .8em; letter-spacing: .
   box-shadow: 0 2px 0 rgba(0, 0, 0, .3), 0 18px 40px rgba(0, 0, 0, .55);
 }
 .face.back { transform: rotateY(180deg); background: var(--manila-2); }
+/* WebKit can ignore backface-visibility mid-transform, so swap the faces at the flip's midpoint. */
+.face.front { transition: visibility 0s .18s; }
+.card.down .face.front { visibility: hidden; }
+.face.back { visibility: hidden; transition: visibility 0s .18s; }
+.card.down .face.back { visibility: visible; }
 .face.back svg { display: block; width: 100%; height: 100%; }
 
 .face.front {
@@ -258,16 +262,17 @@ h1 span { display: block; color: var(--wall); font-size: .8em; letter-spacing: .
 .face.front::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 60%;
   pointer-events: none;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, .45) 45%, transparent 60%);
-  background-size: 250% 100%;
-  background-position: 120% 0;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .45), transparent);
   z-index: 3;
-  mix-blend-mode: soft-light;
+  opacity: 0;
 }
 .card.shine .face.front::before { animation: shine 1.1s ease-out; }
-@keyframes shine { to { background-position: -60% 0; } }
+@keyframes shine { 0% { opacity: 1; transform: translateX(0); } 100% { opacity: 1; transform: translateX(380%); } }
 
 .card-head {
   position: relative;
@@ -376,8 +381,17 @@ h1 span { display: block; color: var(--wall); font-size: .8em; letter-spacing: .
   transform: translateX(3px);
   outline: none;
 }
-.card.choosing .stats { animation: invite 2.4s ease-in-out infinite; }
-@keyframes invite { 50% { filter: drop-shadow(0 0 5px rgba(201, 178, 107, .8)); } }
+.stats { position: relative; }
+.card.choosing .stats::after {
+  content: "";
+  position: absolute;
+  inset: -3px -4px;
+  border: 2px solid rgba(201, 150, 40, .7);
+  border-radius: 4px;
+  pointer-events: none;
+  animation: invite 2.4s ease-in-out infinite;
+}
+@keyframes invite { 50% { opacity: .15; } }
 .stat.picked { background: linear-gradient(100deg, transparent 1%, rgba(242, 228, 60, .75) 3%, rgba(242, 228, 60, .6) 97%, transparent 99%); }
 .stat.won { background: linear-gradient(100deg, transparent 1%, rgba(110, 190, 90, .6) 3%, rgba(110, 190, 90, .5) 97%, transparent 99%); }
 .stat.lost { color: var(--lose); }
@@ -420,7 +434,6 @@ h1 span { display: block; color: var(--wall); font-size: .8em; letter-spacing: .
   opacity: 0;
   z-index: 4;
   pointer-events: none;
-  mix-blend-mode: multiply;
 }
 .stamp.blue { color: #1f5f8a; border-color: #1f5f8a; font-size: 26px; }
 .stamp.show { animation: stamp .4s cubic-bezier(.2, 1.6, .4, 1) forwards; }
@@ -456,6 +469,8 @@ h1 span { display: block; color: var(--wall); font-size: .8em; letter-spacing: .
 }
 .thumb {
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 150px 250px;
   width: 150px;
   height: 250px;
   cursor: pointer;
@@ -481,7 +496,7 @@ dialog {
   max-height: calc(100dvh - 32px);
   box-shadow: 0 30px 80px rgba(0, 0, 0, .7);
 }
-dialog::backdrop { background: rgba(12, 10, 6, .75); backdrop-filter: blur(3px); }
+dialog::backdrop { background: rgba(12, 10, 6, .82); }
 dialog[open] { animation: pop .35s var(--ease); }
 @keyframes pop { from { opacity: 0; transform: translateY(14px) rotate(-1deg) scale(.96); } }
 dialog h2 { margin: 0 0 12px; font: 400 24px var(--type); text-align: center; }
