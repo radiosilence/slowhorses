@@ -164,22 +164,22 @@ export default {
     },
     {
       where: "IT support",
-      text: "Your password has expired again.",
+      text: "The Park's IT desk has revoked your login again, because Slough House \"isn't on the system\".",
       options: [
-        { text: "A random string, memorised and never written down.", results: { hub: 2, joe: 1 }, axes: { squalor: -1 } },
-        { text: "Your grandfather's old service number.", results: { retired: 2, records: 1 }, axes: { loyalty: 1 } },
-        { text: "The old one with a 2 on the end.", results: { slough: 2, dogs: 1 }, axes: { squalor: 1, ambition: -1 } },
-        { text: "A sticky note under the keyboard, deliberately wrong.", results: { seconddesk: 1, station: 2 }, axes: { guile: 2 } },
+        { text: "Walk to Regent's Park and borrow someone else's terminal.", results: { hub: 2, joe: 1 }, axes: { squalor: -1 } },
+        { text: "Do it on paper. The Service ran on paper for fifty years.", results: { retired: 2, records: 1 }, axes: { loyalty: 1 } },
+        { text: "Use Lamb's login. His password is almost certainly his surname.", results: { slough: 2, dogs: 1 }, axes: { squalor: 1, ambition: -1 } },
+        { text: "Ring IT in a deputy director's voice, and wait.", results: { seconddesk: 1, station: 2 }, axes: { guile: 2 } },
       ],
     },
     {
-      where: "The shared fridge",
-      text: "Somebody has eaten your lunch.",
+      where: "Lamb's office",
+      text: "Lamb is eating your lunch at his desk. He did not ask. He is not sorry.",
       options: [
-        { text: "Check the corridor camera. It takes four minutes.", results: { hub: 2, dogs: 1 }, axes: { nerve: -1 } },
-        { text: "Say nothing. Note who looks guilty at the next meeting.", results: { seconddesk: 1, records: 2 }, axes: { guile: 2 } },
-        { text: "Eat theirs. It's only fair.", results: { slough: 1, chieftain: 1 }, axes: { squalor: 2, loyalty: -1 } },
-        { text: "Leave a sandwich tomorrow with a surprise in it.", results: { joe: 1, dogs: 1, station: 1 }, axes: { nerve: 1, guile: 1 } },
+        { text: "Note the time, the sandwich and the witnesses.", results: { hub: 2, dogs: 1 }, axes: { nerve: -1 } },
+        { text: "Say nothing, and start a log of everything he takes. It may be useful one day.", results: { seconddesk: 1, records: 2 }, axes: { guile: 2 } },
+        { text: "Eat whatever he has left in his drawer. Fair's fair.", results: { slough: 1, chieftain: 1 }, axes: { squalor: 2, loyalty: -1 } },
+        { text: "Tomorrow, make the sandwich hot enough to make him reconsider.", results: { joe: 1, dogs: 1, station: 1 }, axes: { nerve: 1, guile: 1 } },
       ],
     },
     {
