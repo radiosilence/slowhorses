@@ -20,6 +20,8 @@ Content is safe up to the end of season 5, which finished airing in October 2025
 
 **Results live in the URL.** A result is encoded in the hash (`#first/second/axes/match`), so a shared link opens that result directly with no server and no stored state, and offers the visitor the quiz.
 
+**Oblique questions.** About a third of the questions are set openly in the show's world; the rest ask about temperament in ordinary situations (a stranger's bag, a lie from a friend, what you would save from a fire), so the answers do not telegraph the result. Every option spreads its weight over two or three results, and each quiz is checked against 10,000 random answer sheets so that no result is much rarer or commoner than the others.
+
 **Postings that appear on screen.** The role quiz uses only posts the show has depicted by the end of season 5. The Limitations Committee is left out because it first appears in season 6.
 
 **Cheap animation.** Only `transform` and `opacity` are animated, on HTML elements; decorative loops pause when the tab is hidden; there are no full-screen blend modes or backdrop blurs. Cards in flight are bare backs, and the deck gallery is built a couple of cards per frame. WebKit can ignore `backface-visibility` mid-flip, so each card swaps the visibility of its faces at the flip's midpoint.
