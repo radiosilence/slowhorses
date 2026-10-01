@@ -66,6 +66,8 @@ body { min-height: 100dvh; }
 .track i { display: block; height: 100%; background: var(--wall); transition: width .5s var(--ease); }
 
 .deck { position: relative; display: grid; }
+/* On tall screens, sit the question sheet in the middle of the space rather than under the bar. */
+@media (min-height: 760px) { #quiz .deck { margin-block: auto; } #quiz { padding-bottom: calc(env(safe-area-inset-bottom) + 64px); } }
 .qcard { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 14px; transform-origin: 50% 0; }
 .qcard header { display: flex; justify-content: space-between; gap: 12px; font: 700 11px var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
 .qcard .q-tag { color: var(--stamp); }

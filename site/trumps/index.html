@@ -45,7 +45,8 @@
   <section id="game" class="screen" hidden>
     <header class="bar opp">
       <div class="pile" id="pile-cpu"><span class="count" id="count-cpu">0</span></div>
-      <div class="who"><b><span id="cpu-name"></span> <i class="lead" id="lead-cpu">Lead</i></b><small id="cpu-sub"></small></div>
+      <div class="who"><b id="cpu-name"></b><small><span id="cpu-sub"></span> <i class="lead" id="lead-cpu">Lead</i></small></div>
+      <a class="icon-btn" href="../" aria-label="All games" title="All games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l2 2h10v10H3z"/><path d="M3 7V5h6"/></svg></a>
       <button class="icon-btn" id="mute" aria-label="Toggle sound"></button>
       <button class="icon-btn" id="quit" aria-label="Leave the table">✕</button>
     </header>
@@ -55,7 +56,7 @@
     </div>
     <footer class="bar you">
       <div class="pile" id="pile-you"><span class="count" id="count-you">0</span></div>
-      <div class="who"><b>You <i class="lead" id="lead-you">Lead</i></b><small>Your pile</small></div>
+      <div class="who"><b>You</b><small>Your pile <i class="lead" id="lead-you">Lead</i></small></div>
       <div class="score" id="score"></div>
     </footer>
   </section>
@@ -94,6 +95,7 @@
       <button class="btn primary" id="again">Deal again</button>
       <button class="btn" id="to-title">Leave the table</button>
     </div>
+    <a class="end-hub" href="../">All games</a>
   </dialog>
 
   <script type="module" src="game.js"></script>

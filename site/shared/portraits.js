@@ -129,15 +129,9 @@ export function portrait(card, tint = "#6b5a2c") {
     .map((y, i) => `<path d="M0 ${y} H200" stroke="${CHART}" stroke-width="${i % 2 ? 0.8 : 1.6}"/><text x="6" y="${y - 3}" font-size="9" fill="#a39a7f" font-family="Courier Prime, monospace">${7 - i * 0.5}</text>`)
     .join("");
   const curls = hair.curls?.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join("") ?? "";
-  let seed = [...card.id].reduce((a, ch) => a * 31 + ch.charCodeAt(0), 7) >>> 0;
-  const rand = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 2 ** 32);
+  // Stubble is a five-o'clock shadow over the jaw, the way an ink sketch would wash it in.
   const beard = l.beard === "stubble"
-    ? `<g clip-path="url(#${id}-face)" fill="${INK}" opacity=".32">${Array.from({ length: 160 }, () => {
-        const x = 60 + rand() * 80;
-        const y = 126 + rand() * 50;
-        const inMouth = Math.abs(x - 100) < 16 && y > 140 && y < 156;
-        return inMouth || (Math.abs(x - 100) > 30 && y < 140) ? "" : `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(0.35 + rand() * 0.4).toFixed(2)}"/>`;
-      }).join("")}</g>`
+    ? `<path d="M58 124 C66 134 76 136 86 134 C94 140 106 140 114 134 C124 136 134 134 142 124 L150 190 L50 190 Z" clip-path="url(#${id}-face)" fill="${hairFill === HAIRTONE.white ? HAIRTONE.grey : hairFill}" opacity=".26" stroke="none"/>`
     : l.beard ? `<g fill="${hairFill}" stroke="${INK}" stroke-width="1.6">${sketch(BEARD[l.beard])}</g>` : "";
 
   return `<svg viewBox="0 0 200 250" class="portrait-svg" aria-hidden="true">
